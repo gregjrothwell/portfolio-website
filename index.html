@@ -1,115 +1,517 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Greg Rothwell - Scrum Master & IT Professional with 11+ years experience">
-    <title>Greg Rothwell | Scrum Master & IT Professional</title>
+    <meta name="description" content="Greg Rothwell - Lead Scrum Master specializing in scaling agile teams, tribe transformations, and breaking down organizational silos. 11+ years in IT delivery.">
+    <title>Greg Rothwell | Lead Scrum Master & Agile Transformation Leader</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <nav class="navbar">
         <div class="container">
-            <div class="nav-brand">Greg Rothwell</div>
+            <div class="nav-brand">GR</div>
             <ul class="nav-menu">
                 <li><a href="#about">About</a></li>
+                <li><a href="#achievements">Achievements</a></li>
                 <li><a href="#experience">Experience</a></li>
+                <li><a href="#case-studies">Case Studies</a></li>
+                <li><a href="#philosophy">Philosophy</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"/>
+                    <line x1="12" y1="1" x2="12" y2="3"/>
+                    <line x1="12" y1="21" x2="12" y2="23"/>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                    <line x1="1" y1="12" x2="3" y2="12"/>
+                    <line x1="21" y1="12" x2="23" y2="12"/>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                </svg>
+                <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
         </div>
     </nav>
 
     <header class="hero">
         <div class="container">
-            <h1>Greg Rothwell</h1>
-            <h2>Scrum Master & IT Professional</h2>
-            <p class="tagline">8+ years as Scrum Master | 11+ years in IT | Agile Leadership Expert</p>
-            <a href="#contact" class="cta-button">Get In Touch</a>
+            <div class="hero-content">
+                <p class="hero-label">Lead Scrum Master</p>
+                <h1>Scaling Agile Teams.<br>Driving Transformation.</h1>
+                <p class="hero-description">11 years building high-performing teams and challenging the status quo in fast-paced environments—from digital agencies to multinational corporations.</p>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                    <a href="#" id="download-cv" class="btn btn-secondary">Download CV</a>
+                </div>
+            </div>
         </div>
     </header>
 
     <section id="about" class="section">
         <div class="container">
-            <h2>About Me</h2>
-            <div class="content-box">
-                <p>Experienced Scrum Master with over 8 years of expertise in facilitating agile teams and driving successful project delivery. With a solid foundation of 11+ years in IT, starting from project and account management roles in digital agencies, I bring a comprehensive understanding of both technical and business perspectives.</p>
-                <p>I specialize in fostering high-performing teams, removing impediments, and creating environments where continuous improvement thrives.</p>
+            <div class="section-header">
+                <h2>About</h2>
+                <p class="section-subtitle">Flexible, motivated, and always challenging convention</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="lead">Lead Scrum Master with deep expertise in scaling agile practices and transforming delivery organizations.</p>
+                    <p>Over 11 years of experience spanning small digital agencies to large multinational corporations, I've built my career on one core belief: challenging the status quo leads to better outcomes.</p>
+                    <p>Whether it's scaling a Scrum function from 3 to 6+ Masters, implementing tribe-based delivery models, or breaking down silos between UX and development teams, I drive change that matters. My passion lies in building systems and cultures where teams can do their best work.</p>
+                    <p>Currently leading the Scrum function at Pretty Little Thing, supporting 10+ delivery squads while continuously improving our scaled agile maturity.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">11+</div>
+                        <div class="stat-label">Years in IT</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">8+</div>
+                        <div class="stat-label">Years as Scrum Master</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">Squads Supported</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">3→6+</div>
+                        <div class="stat-label">SMs Scaled at PLT</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="experience" class="section section-alt">
+    <section id="achievements" class="section section-dark">
         <div class="container">
-            <h2>Professional Experience</h2>
+            <div class="section-header">
+                <h2>Key Achievements</h2>
+                <p class="section-subtitle">Transformations that moved the needle</p>
+            </div>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-icon">👥</div>
+                    <h3>Built the Scrum Function</h3>
+                    <p>Scaled the Scrum Master team from 3 to 6+ members at Pretty Little Thing, establishing minimum standards while maintaining squad flexibility. Currently expanding to support 12+ Scrum Masters.</p>
+                    <div class="achievement-tags">
+                        <span class="tag">Leadership</span>
+                        <span class="tag">Team Building</span>
+                    </div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">🏗️</div>
+                    <h3>Tribe Model Transformation</h3>
+                    <p>Implemented tribe-based delivery model after squad numbers exceeded 10, addressing critical inter-squad communication breakdowns that were damaging delivery velocity.</p>
+                    <div class="achievement-tags">
+                        <span class="tag">Scaled Agile</span>
+                        <span class="tag">Org Design</span>
+                    </div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">🎨</div>
+                    <h3>UX Integration Revolution</h3>
+                    <p>Drove UX resource integration directly into delivery squads, eliminating friction and bottlenecks. Data-driven development improved dramatically with UX metrics embedded in squad workflows.</p>
+                    <div class="achievement-tags">
+                        <span class="tag">Process Improvement</span>
+                        <span class="tag">Collaboration</span>
+                    </div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">⚙️</div>
+                    <h3>Technical Excellence Initiatives</h3>
+                    <p>Championed API contract testing and CI/CD POCs, eliminating frontend-to-backend notification bottlenecks and enabling squads to burn down tickets when code goes live.</p>
+                    <div class="achievement-tags">
+                        <span class="tag">DevOps</span>
+                        <span class="tag">Quality</span>
+                    </div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">📊</div>
+                    <h3>Health Check Framework</h3>
+                    <p>Introduced quarterly squad health checks across all teams to assess and systematically improve department maturity. Defined minimum service and health metrics for accurate stakeholder communication.</p>
+                    <div class="achievement-tags">
+                        <span class="tag">Metrics</span>
+                        <span class="tag">Continuous Improvement</span>
+                    </div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">🎓</div>
+                    <h3>Learning & Development Culture</h3>
+                    <p>Secured protected time for L&D, partnered with AWS for workshops, and laid groundwork for cross-tribe Guild model focused on areas like CI/CD and Machine Learning.</p>
+                    <div class="achievement-tags">
+                        <span class="tag">Culture</span>
+                        <span class="tag">Growth</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Experience</h2>
+                <p class="section-subtitle">11 years of delivery across agencies and enterprises</p>
+            </div>
             <div class="timeline">
                 <div class="timeline-item">
-                    <div class="timeline-marker"></div>
+                    <div class="timeline-date">Dec 2021 – Present</div>
                     <div class="timeline-content">
-                        <h3>Scrum Master</h3>
-                        <p class="timeline-period">8+ Years Experience</p>
+                        <h3>Lead Scrum Master</h3>
+                        <p class="company">Pretty Little Thing, Manchester</p>
                         <ul>
-                            <li>Facilitated daily standups, sprint planning, retrospectives, and reviews</li>
-                            <li>Coached teams on agile principles and practices</li>
-                            <li>Removed impediments and fostered continuous improvement</li>
-                            <li>Collaborated with Product Owners to manage backlogs effectively</li>
+                            <li>Led team of 6 Scrum Masters after expanding from 3 over a short period (with 6+ more planned)</li>
+                            <li>Built the Scrum Function ensuring minimum standards while providing squad flexibility</li>
+                            <li>Implemented tribe-based delivery model for 10+ squads after communication degradation</li>
+                            <li>Maintained delivery stability during 40% staff expansion</li>
+                            <li>Facilitated merge with development squads from other group companies</li>
+                            <li>Integrated UX resources directly into squads, reducing friction and improving data-driven development</li>
+                            <li>Introduced quarterly health checks and tribe reviews for stakeholder alignment</li>
+                            <li>Championed API contract testing and CI/CD initiatives</li>
                         </ul>
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-marker"></div>
+                    <div class="timeline-date">Jun 2021 – Dec 2021</div>
                     <div class="timeline-content">
-                        <h3>Project/Account Manager</h3>
-                        <p class="timeline-period">Digital Agencies</p>
+                        <h3>Scrum Master</h3>
+                        <p class="company">Pretty Little Thing, Manchester</p>
                         <ul>
-                            <li>Managed client relationships and project delivery</li>
-                            <li>Coordinated cross-functional teams</li>
-                            <li>Delivered digital projects on time and within budget</li>
-                            <li>Built strong foundation in IT and project management</li>
+                            <li>Supported up to 5 squads simultaneously, prioritizing immature squads for maturity gains</li>
+                            <li>Facilitated delivery of React Native iOS/Android PLT Marketplace app</li>
+                            <li>Supported large-scale Magento decommission and React web frontend transition</li>
+                            <li>Partnered with Product function to improve technical knowledge and squad maturity</li>
                         </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Feb 2021 – Jun 2021</div>
+                    <div class="timeline-content">
+                        <h3>Scrum Master</h3>
+                        <p class="company">Studio Retail, Accrington</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Sep 2019 – Oct 2020</div>
+                    <div class="timeline-content">
+                        <h3>Scrum Master</h3>
+                        <p class="company">Foreign Currency Direct, Manchester</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Oct 2018 – Sep 2019</div>
+                    <div class="timeline-content">
+                        <h3>Scrum Master</h3>
+                        <p class="company">Covéa Insurance, Halifax</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Oct 2017 – Oct 2018</div>
+                    <div class="timeline-content">
+                        <h3>Scrum Master</h3>
+                        <p class="company">Pretty Little Thing, Manchester</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Dec 2016 – Oct 2017</div>
+                    <div class="timeline-content">
+                        <h3>Project Delivery Manager</h3>
+                        <p class="company">Enghouse Networks, Blackburn</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Aug 2015 – Dec 2016</div>
+                    <div class="timeline-content">
+                        <h3>Project Delivery Assistant</h3>
+                        <p class="company">Enghouse Networks, Blackburn</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2013 – 2015</div>
+                    <div class="timeline-content">
+                        <h3>Project Manager</h3>
+                        <p class="company">Netsells Ltd, Scarborough</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="skills" class="section">
+    <section id="case-studies" class="section section-dark">
         <div class="container">
-            <h2>Core Competencies</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <h3>Agile Methodologies</h3>
-                    <p>Scrum, Kanban, SAFe, Agile coaching</p>
+            <div class="section-header">
+                <h2>Case Studies</h2>
+                <p class="section-subtitle">Deep dives into key transformations</p>
+            </div>
+            <div class="case-studies">
+                <div class="case-study">
+                    <div class="case-study-header">
+                        <span class="case-number">01</span>
+                        <h3>Building the Scrum Function</h3>
+                        <p class="case-context">Pretty Little Thing • 2021-Present</p>
+                    </div>
+                    <div class="case-study-content">
+                        <div class="case-challenge">
+                            <h4>The Challenge</h4>
+                            <p>PLT needed to rapidly scale its Scrum capability to support growing squad numbers while maintaining quality and consistency. The existing team of 3 Scrum Masters was stretched thin, and there was no standardized framework for how Scrum should operate across the organization.</p>
+                        </div>
+                        <div class="case-approach">
+                            <h4>The Approach</h4>
+                            <p>Built a scalable Scrum function from the ground up by:</p>
+                            <ul>
+                                <li>Recruiting and onboarding new Scrum Masters, doubling the team size</li>
+                                <li>Establishing minimum standards for ceremonies, metrics, and squad health</li>
+                                <li>Creating flexible frameworks that allowed squads and tribes to customize their ways of working</li>
+                                <li>Developing clear role definitions and career progression paths</li>
+                                <li>Building a community of practice for continuous learning and alignment</li>
+                            </ul>
+                        </div>
+                        <div class="case-impact">
+                            <h4>The Impact</h4>
+                            <p>Created a sustainable, scalable Scrum function supporting 10+ squads with plans to expand to 12+ Scrum Masters. Teams now operate with consistent quality while maintaining autonomy, and the function has become a model for other departments in the organization.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="skill-card">
-                    <h3>Team Facilitation</h3>
-                    <p>Sprint ceremonies, retrospectives, conflict resolution</p>
+
+                <div class="case-study">
+                    <div class="case-study-header">
+                        <span class="case-number">02</span>
+                        <h3>Tribe Model Transformation</h3>
+                        <p class="case-context">Pretty Little Thing • 2022</p>
+                    </div>
+                    <div class="case-study-content">
+                        <div class="case-challenge">
+                            <h4>The Challenge</h4>
+                            <p>As squad numbers grew beyond 10, inter-squad communication began to break down. Dependencies weren't being surfaced early, duplicated work was happening across teams, and delivery velocity was suffering. The organization needed a scaled framework, but roadmap pressure made transformation difficult.</p>
+                        </div>
+                        <div class="case-approach">
+                            <h4>The Approach</h4>
+                            <p>Implemented a tribe-based delivery model by:</p>
+                            <ul>
+                                <li>Analyzing squad dependencies and domain boundaries to define logical tribes</li>
+                                <li>Establishing tribe-level ceremonies (planning, reviews, retros) while preserving squad autonomy</li>
+                                <li>Creating Tribe Reviews to showcase work to stakeholders and invite roadmap collaboration</li>
+                                <li>Defining cross-tribe communication protocols and dependency management processes</li>
+                                <li>Continuously iterating on the model despite ongoing roadmap pressure</li>
+                            </ul>
+                        </div>
+                        <div class="case-impact">
+                            <h4>The Impact</h4>
+                            <p>Restored effective communication across squads, reduced duplicated effort, and improved delivery predictability. The tribe model provided the scaffolding needed to maintain quality during rapid team expansion (40% staff increase) and created a foundation for future scaling.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="skill-card">
-                    <h3>Stakeholder Management</h3>
-                    <p>Client relationships, communication, expectation management</p>
-                </div>
-                <div class="skill-card">
-                    <h3>Project Management</h3>
-                    <p>Planning, execution, delivery, continuous improvement</p>
-                </div>
-                <div class="skill-card">
-                    <h3>Tools & Platforms</h3>
-                    <p>Jira, Confluence, Azure DevOps, Slack, MS Teams</p>
-                </div>
-                <div class="skill-card">
-                    <h3>Leadership</h3>
-                    <p>Team coaching, servant leadership, organizational change</p>
+
+                <div class="case-study">
+                    <div class="case-study-header">
+                        <span class="case-number">03</span>
+                        <h3>UX Integration Transformation</h3>
+                        <p class="case-context">Pretty Little Thing • 2022-2023</p>
+                    </div>
+                    <div class="case-study-content">
+                        <div class="case-challenge">
+                            <h4>The Challenge</h4>
+                            <p>UX and development teams operated in separate silos, creating massive friction and bottlenecks. Designs would arrive at the wrong time, UX metrics weren't considered in sprint planning, and there was constant tension between design quality and delivery velocity.</p>
+                        </div>
+                        <div class="case-approach">
+                            <h4>The Approach</h4>
+                            <p>Drove UX integration into delivery squads by:</p>
+                            <ul>
+                                <li>Building alignment between UX leadership and engineering on embedded model benefits</li>
+                                <li>Defining how UX resources would be allocated and work within squad cadences</li>
+                                <li>Integrating UX metrics into sprint planning and definition of done</li>
+                                <li>Creating feedback loops between design and development for continuous improvement</li>
+                                <li>Coaching squads on collaborative design practices and just-in-time delivery</li>
+                            </ul>
+                        </div>
+                        <div class="case-impact">
+                            <h4>The Impact</h4>
+                            <p>Eliminated the UX-development bottleneck entirely. Squads now receive designs exactly when needed, data-driven development improved through embedded UX metrics, and the quality of shipped features increased dramatically. The change became a model for breaking down other organizational silos.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="section section-alt">
+    <section id="philosophy" class="section">
         <div class="container">
-            <h2>Get In Touch</h2>
+            <div class="section-header">
+                <h2>Philosophy & Approach</h2>
+                <p class="section-subtitle">How I think about agile transformation</p>
+            </div>
+            <div class="philosophy-content">
+                <div class="philosophy-card">
+                    <h3>Challenge the Status Quo</h3>
+                    <p>Real improvement requires questioning established norms. I consistently push organizations to examine whether current practices serve their goals or simply persist out of habit. Change for the sake of change is wasteful, but change driven by clear purpose creates value.</p>
+                </div>
+                <div class="philosophy-card">
+                    <h3>Standards with Flexibility</h3>
+                    <p>Scaling requires baseline standards—without them, chaos follows. But rigidity kills team ownership. I build frameworks that ensure minimum quality bars while giving teams the autonomy to adapt practices to their context. One size rarely fits all.</p>
+                </div>
+                <div class="philosophy-card">
+                    <h3>Servant Leadership in Action</h3>
+                    <p>Leadership isn't about authority—it's about removing obstacles and creating environments where teams excel. My role is to clear the path, provide context, and ensure teams have what they need to deliver. When teams succeed, leaders have done their job.</p>
+                </div>
+                <div class="philosophy-card">
+                    <h3>Data-Driven Decisions</h3>
+                    <p>Opinions are valuable, but data tells the truth. I establish metrics that matter, implement health checks that reveal real issues, and use evidence to guide improvement efforts. Gut feel has its place, but sustainable change requires measurement.</p>
+                </div>
+                <div class="philosophy-card">
+                    <h3>Build Systems, Not Dependencies</h3>
+                    <p>The goal isn't to make teams dependent on Scrum Masters—it's to build self-sufficient teams and sustainable systems. I focus on creating processes, frameworks, and cultures that function well after I'm no longer in the room.</p>
+                </div>
+                <div class="philosophy-card">
+                    <h3>Continuous Improvement is Non-Negotiable</h3>
+                    <p>Agility isn't a destination—it's a practice. Retrospectives aren't ceremonies to complete; they're opportunities to evolve. Protected time for learning and experimentation isn't a luxury; it's essential infrastructure for long-term success.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2>Skills & Expertise</h2>
+                <p class="section-subtitle">Technical capabilities and certifications</p>
+            </div>
+            <div class="skills-layout">
+                <div class="skills-column">
+                    <h3>Agile & Frameworks</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span class="skill-name">Scrum</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 100%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Scaled Agile (Tribes/SAFe concepts)</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 95%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Kanban</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 90%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Agile Coaching</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 95%"></div></div>
+                        </div>
+                    </div>
+
+                    <h3 class="skills-subsection">Tools & Platforms</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Jira</span>
+                        <span class="tech-tag">Confluence</span>
+                        <span class="tech-tag">Azure DevOps</span>
+                        <span class="tech-tag">Slack</span>
+                        <span class="tech-tag">MS Teams</span>
+                        <span class="tech-tag">Git</span>
+                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">React Native</span>
+                    </div>
+
+                    <h3 class="skills-subsection">Development & DevOps</h3>
+                    <ul class="simple-list">
+                        <li>Microservices architecture</li>
+                        <li>CI/CD pipelines</li>
+                        <li>API contract testing</li>
+                        <li>Version control (Git)</li>
+                        <li>Cloud platforms (AWS)</li>
+                        <li>Understanding of React/React Native development</li>
+                    </ul>
+                </div>
+
+                <div class="skills-column">
+                    <h3>Leadership & Management</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span class="skill-name">Team Building & Scaling</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 95%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Servant Leadership</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 100%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Stakeholder Management</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 95%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Organizational Change</span>
+                            <div class="skill-bar"><div class="skill-fill" style="width: 90%"></div></div>
+                        </div>
+                    </div>
+
+                    <h3 class="skills-subsection">Certifications</h3>
+                    <div class="cert-card">
+                        <div class="cert-badge">✓</div>
+                        <div class="cert-details">
+                            <div class="cert-name">Professional Scrum Master I (PSM I)</div>
+                            <div class="cert-issuer">Scrum.org</div>
+                        </div>
+                    </div>
+
+                    <h3 class="skills-subsection">Additional Capabilities</h3>
+                    <ul class="simple-list">
+                        <li>Business analysis</li>
+                        <li>Project management</li>
+                        <li>UX collaboration & integration</li>
+                        <li>Metrics definition & tracking</li>
+                        <li>Workshop facilitation</li>
+                        <li>Cross-functional communication</li>
+                        <li>Conflict resolution</li>
+                        <li>Technical literacy (CMS/CRM systems)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="interests" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Beyond Work</h2>
+                <p class="section-subtitle">What drives me outside the office</p>
+            </div>
+            <div class="interests-grid">
+                <div class="interest-card">
+                    <div class="interest-icon">📷</div>
+                    <h3>Photography & Travel</h3>
+                    <p>Combining Canon dSLR photography with travel to increase my country count. I also fly drones to capture unique perspectives of the places I visit.</p>
+                </div>
+                <div class="interest-card">
+                    <div class="interest-icon">🚀</div>
+                    <h3>Space Exploration</h3>
+                    <p>Avid SpaceX follower, passionate about the mission to make life multiplanetary and the engineering challenges of space travel.</p>
+                </div>
+                <div class="interest-card">
+                    <div class="interest-icon">🐕</div>
+                    <h3>Dog Training</h3>
+                    <p>Daily training sessions with my Doberman x German Shepherd. The discipline and consistency required mirror the principles I apply in team coaching.</p>
+                </div>
+                <div class="interest-card">
+                    <div class="interest-icon">⛷️</div>
+                    <h3>Sports & Outdoors</h3>
+                    <p>Yearly skiing trips to the Alps, regular countryside walks, and a history of competitive tennis (represented Burnley) and basketball (represented Lancashire).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2>Let's Connect</h2>
+                <p class="section-subtitle">Interested in discussing agile transformation, new opportunities, or collaborations?</p>
+            </div>
             <div class="contact-content">
-                <p>I'm always interested in discussing new opportunities, collaborations, or how I can help your organization succeed with agile practices.</p>
+                <p>I'm always open to conversations about scaling agile teams, breaking down organizational silos, or exploring new challenges in delivery leadership.</p>
                 <p class="contact-note">Contact details available upon request.</p>
             </div>
         </div>

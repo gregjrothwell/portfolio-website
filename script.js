@@ -1,44 +1,66 @@
+// Theme Toggle Functionality
+const themeToggle = document.getElementById('theme-toggle');
+const html = document.documentElement;
+
+// Check for saved theme preference or default to 'light'
+const currentTheme = localStorage.getItem('theme') || 'light';
+html.setAttribute('data-theme', currentTheme);
+
+themeToggle.addEventListener('click', () => {
+    const currentTheme = html.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+    html.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+});
+
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+            const navHeight = document.querySelector('.navbar').offsetHeight;
+            const targetPosition = target.offsetTop - navHeight;
+
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
             });
         }
     });
 });
 
-// Add active state to navigation on scroll
+// Active navigation state on scroll
 window.addEventListener('scroll', () => {
     const sections = document.querySelectorAll('.section, .hero');
     const navLinks = document.querySelectorAll('.nav-menu a');
 
     let current = '';
+    const scrollPosition = window.pageYOffset + 100;
 
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
-        if (pageYOffset >= sectionTop - 100) {
+
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
             current = section.getAttribute('id');
         }
     });
 
     navLinks.forEach(link => {
-        link.classList.remove('active');
+        link.style.color = '';
         if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
+            link.style.color = getComputedStyle(document.documentElement)
+                .getPropertyValue('--primary-color');
         }
     });
 });
 
-// Intersection Observer for scroll animations
+// Intersection Observer for fade-in animations
 const observerOptions = {
     threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
+    rootMargin: '0px 0px -50px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
@@ -50,14 +72,136 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe all sections for animation
+// Observe elements for animation
 document.addEventListener('DOMContentLoaded', () => {
-    const animatedElements = document.querySelectorAll('.timeline-item, .skill-card, .content-box');
+    const animatedElements = document.querySelectorAll(
+        '.achievement-card, .case-study, .philosophy-card, ' +
+        '.interest-card, .timeline-item, .stat-card, .about-text'
+    );
 
     animatedElements.forEach(el => {
         el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
+        el.style.transform = 'translateY(30px)';
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(el);
     });
+
+    // Animate skill bars when they come into view
+    const skillBars = document.querySelectorAll('.skill-fill');
+    const skillObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const width = entry.target.style.width;
+                entry.target.style.width = '0';
+                setTimeout(() => {
+                    entry.target.style.width = width;
+                }, 100);
+                skillObserver.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    skillBars.forEach(bar => skillObserver.observe(bar));
+});
+
+// Download CV functionality
+document.getElementById('download-cv').addEventListener('click', (e) => {
+    e.preventDefault();
+
+    // Create a simple text version of the CV
+    const cvContent = `GREG ROTHWELL
+Lead Scrum Master & Agile Transformation Leader
+
+PROFILE
+Lead Scrum Master with deep expertise in scaling agile practices and transforming delivery organizations. Over 11 years of experience spanning small digital agencies to large multinational corporations, with a passion for challenging the status quo and driving meaningful change.
+
+CONTACT
+Website: https://gregrothwell.co.uk
+Location: Lancashire, UK
+
+KEY ACHIEVEMENTS
+• Built the Scrum Function at Pretty Little Thing (3→6+ SMs, expanding to 12+)
+• Implemented tribe-based delivery model for 10+ squads
+• Drove UX integration into delivery squads, eliminating friction and bottlenecks
+• Championed API contract testing and CI/CD initiatives
+• Introduced quarterly squad health checks across all teams
+• Secured protected time for L&D and laid groundwork for Guild model
+
+EXPERIENCE
+
+Lead Scrum Master | Pretty Little Thing, Manchester (Dec 2021 – Present)
+• Led team of 6 Scrum Masters after expanding from 3 over a short period
+• Built the Scrum Function ensuring minimum standards while providing squad flexibility
+• Implemented tribe-based delivery model for 10+ squads after communication degradation
+• Maintained delivery stability during 40% staff expansion
+• Facilitated merge with development squads from other group companies
+• Integrated UX resources directly into squads, reducing friction
+• Introduced quarterly health checks and tribe reviews for stakeholder alignment
+• Championed API contract testing and CI/CD initiatives
+
+Scrum Master | Pretty Little Thing, Manchester (Jun 2021 – Dec 2021)
+• Supported up to 5 squads simultaneously
+• Facilitated delivery of React Native iOS/Android PLT Marketplace app
+• Supported large-scale Magento decommission and React web frontend transition
+
+Scrum Master | Studio Retail, Accrington (Feb 2021 – Jun 2021)
+
+Scrum Master | Foreign Currency Direct, Manchester (Sep 2019 – Oct 2020)
+
+Scrum Master | Covéa Insurance, Halifax (Oct 2018 – Sep 2019)
+
+Scrum Master | Pretty Little Thing, Manchester (Oct 2017 – Oct 2018)
+
+Project Delivery Manager | Enghouse Networks, Blackburn (Dec 2016 – Oct 2017)
+
+Project Delivery Assistant | Enghouse Networks, Blackburn (Aug 2015 – Dec 2016)
+
+Project Manager | Netsells Ltd, Scarborough (2013 – 2015)
+
+SKILLS & EXPERTISE
+• Agile Frameworks: Scrum, Scaled Agile (Tribes/SAFe), Kanban, Agile Coaching
+• Leadership: Team Building & Scaling, Servant Leadership, Stakeholder Management
+• Tools: Jira, Confluence, Azure DevOps, Slack, MS Teams, Git, AWS
+• Technical: Microservices, CI/CD pipelines, API contract testing, React/React Native
+• Additional: Business Analysis, Project Management, UX Collaboration, Metrics
+
+CERTIFICATIONS
+Professional Scrum Master I (PSM I) - Scrum.org
+
+For full details and case studies, visit: https://gregrothwell.co.uk
+`;
+
+    // Create a blob and download
+    const blob = new Blob([cvContent], { type: 'text/plain' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'Greg_Rothwell_CV.txt';
+    document.body.appendChild(a);
+    a.click();
+    window.URL.revokeObjectURL(url);
+    document.body.removeChild(a);
+
+    // Show feedback
+    const originalText = e.target.textContent;
+    e.target.textContent = 'Downloaded ✓';
+    setTimeout(() => {
+        e.target.textContent = originalText;
+    }, 2000);
+});
+
+// Navbar background on scroll
+let lastScroll = 0;
+const navbar = document.querySelector('.navbar');
+
+window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+
+    if (currentScroll > 100) {
+        navbar.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+    } else {
+        navbar.style.boxShadow = 'none';
+    }
+
+    lastScroll = currentScroll;
 });
