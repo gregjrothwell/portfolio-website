@@ -387,7 +387,7 @@ body {
 .timeline::before {
     content: '';
     position: absolute;
-    left: 150px;
+    left: 180px;
     top: 0;
     bottom: 0;
     width: 2px;
@@ -396,7 +396,7 @@ body {
 
 .timeline-item {
     display: grid;
-    grid-template-columns: 150px 1fr;
+    grid-template-columns: 180px 1fr;
     gap: 3rem;
     margin-bottom: 3rem;
     position: relative;
@@ -405,7 +405,7 @@ body {
 .timeline-item::before {
     content: '';
     position: absolute;
-    left: 150px;
+    left: 180px;
     top: 8px;
     width: 12px;
     height: 12px;
@@ -422,6 +422,8 @@ body {
     font-weight: 600;
     color: var(--text-tertiary);
     padding-top: 0.25rem;
+    padding-right: 1rem;
+    word-wrap: break-word;
 }
 
 .timeline-content {
