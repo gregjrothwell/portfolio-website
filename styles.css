@@ -243,6 +243,12 @@ body {
     margin-bottom: 2rem;
 }
 
+.contact-note {
+    color: var(--text-light);
+    font-style: italic;
+    margin-bottom: 0 !important;
+}
+
 .contact-links {
     display: flex;
     gap: 1rem;
