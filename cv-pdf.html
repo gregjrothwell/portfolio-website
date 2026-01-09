@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greg Rothwell - CV</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 1.5cm;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 10pt;
+            line-height: 1.5;
+            color: #1e293b;
+            background: white;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            padding: 2rem;
+            margin: -1.5cm -1.5cm 2rem -1.5cm;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 28pt;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .header .subtitle {
+            font-size: 14pt;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+        }
+
+        .header .tagline {
+            font-size: 10pt;
+            opacity: 0.9;
+        }
+
+        /* Stats */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: -1rem 0 2rem 0;
+            padding: 1rem;
+            background: #f8fafc;
+            border-radius: 8px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 16pt;
+            font-weight: 800;
+            color: #6366f1;
+        }
+
+        .stat-label {
+            font-size: 8pt;
+            color: #64748b;
+            margin-top: 0.25rem;
+        }
+
+        /* Sections */
+        h2 {
+            font-size: 14pt;
+            font-weight: 800;
+            color: #6366f1;
+            margin: 1.5rem 0 0.75rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        h3 {
+            font-size: 11pt;
+            font-weight: 700;
+            color: #1e293b;
+            margin: 1rem 0 0.5rem 0;
+        }
+
+        .company {
+            font-size: 10pt;
+            color: #6366f1;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .date {
+            font-size: 9pt;
+            color: #64748b;
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        /* Profile */
+        .profile {
+            font-size: 10pt;
+            line-height: 1.6;
+            color: #475569;
+            margin: 1rem 0;
+        }
+
+        /* Experience Item */
+        .experience-item {
+            margin-bottom: 1.5rem;
+            page-break-inside: avoid;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Lists */
+        ul {
+            margin: 0.5rem 0 0.5rem 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.35rem;
+            color: #475569;
+            line-height: 1.5;
+        }
+
+        /* Achievements Grid */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .achievement {
+            padding: 0.75rem;
+            background: #f8fafc;
+            border-left: 3px solid #6366f1;
+            border-radius: 4px;
+            page-break-inside: avoid;
+        }
+
+        .achievement h4 {
+            font-size: 10pt;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 0.35rem;
+        }
+
+        .achievement p {
+            font-size: 9pt;
+            color: #64748b;
+            line-height: 1.4;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .skill-category h4 {
+            font-size: 10pt;
+            font-weight: 700;
+            color: #6366f1;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-list {
+            list-style: none;
+            margin: 0;
+        }
+
+        .skill-list li {
+            padding: 0.25rem 0;
+            color: #475569;
+        }
+
+        .skill-list li::before {
+            content: '→';
+            color: #6366f1;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Tech Tags */
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+        }
+
+        .tech-tag {
+            background: #f1f5f9;
+            color: #6366f1;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 9pt;
+            font-weight: 600;
+        }
+
+        /* Certification */
+        .cert {
+            background: #f8fafc;
+            border: 2px solid #6366f1;
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            margin: 0.75rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .cert-badge {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #6366f1;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14pt;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .cert-name {
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .cert-issuer {
+            font-size: 9pt;
+            color: #64748b;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e2e8f0;
+            color: #64748b;
+            font-size: 9pt;
+        }
+
+        .footer a {
+            color: #6366f1;
+            text-decoration: none;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                margin: 0;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .page-break {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="no-print" style="position: fixed; top: 20px; right: 20px; z-index: 1000;">
+        <button onclick="window.print()" style="padding: 10px 20px; background: #6366f1; color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px;">
+            Print / Save as PDF
+        </button>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>Greg Rothwell</h1>
+            <div class="subtitle">Lead Scrum Master & Agile Transformation Leader</div>
+            <div class="tagline">Scaling Agile Teams • Driving Transformation • Breaking Down Silos</div>
+        </div>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number">11+</div>
+                <div class="stat-label">Years in IT</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">8+</div>
+                <div class="stat-label">Years as Scrum Master</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">10+</div>
+                <div class="stat-label">Squads Supported</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">3→6+</div>
+                <div class="stat-label">SMs Scaled at PLT</div>
+            </div>
+        </div>
+
+        <h2>Profile</h2>
+        <div class="profile">
+            Lead Scrum Master with deep expertise in scaling agile practices and transforming delivery organizations. Over 11 years of experience spanning small digital agencies to large multinational corporations, with a proven track record of challenging the status quo to drive better outcomes. Specializes in building systems and cultures where teams can do their best work.
+        </div>
+
+        <h2>Key Achievements</h2>
+        <div class="achievements-grid">
+            <div class="achievement">
+                <h4>Built the Scrum Function</h4>
+                <p>Scaled the Scrum Master team from 3 to 6+ members at PLT, establishing minimum standards while maintaining squad flexibility.</p>
+            </div>
+            <div class="achievement">
+                <h4>Tribe Model Transformation</h4>
+                <p>Implemented tribe-based delivery model after squad numbers exceeded 10, addressing critical inter-squad communication breakdowns.</p>
+            </div>
+            <div class="achievement">
+                <h4>UX Integration Revolution</h4>
+                <p>Drove UX resource integration directly into delivery squads, eliminating friction and dramatically improving data-driven development.</p>
+            </div>
+            <div class="achievement">
+                <h4>Technical Excellence</h4>
+                <p>Championed API contract testing and CI/CD POCs, eliminating bottlenecks and enabling squads to burn down tickets when code goes live.</p>
+            </div>
+        </div>
+
+        <h2>Professional Experience</h2>
+
+        <div class="experience-item">
+            <div class="experience-header">
+                <div>
+                    <h3>Lead Scrum Master</h3>
+                    <div class="company">Pretty Little Thing, Manchester</div>
+                </div>
+                <div class="date">Dec 2021 – Present</div>
+            </div>
+            <ul>
+                <li>Led team of 6 Scrum Masters after expanding from 3 over a short period (with 6+ more planned)</li>
+                <li>Built the Scrum Function ensuring minimum standards while providing squad flexibility</li>
+                <li>Implemented tribe-based delivery model for 10+ squads after communication degradation</li>
+                <li>Maintained delivery stability during 40% staff expansion</li>
+                <li>Facilitated merge with development squads from other group companies</li>
+                <li>Integrated UX resources directly into squads, reducing friction and improving data-driven development</li>
+                <li>Introduced quarterly health checks and tribe reviews for stakeholder alignment</li>
+                <li>Championed API contract testing and CI/CD initiatives</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <div class="experience-header">
+                <div>
+                    <h3>Scrum Master</h3>
+                    <div class="company">Pretty Little Thing, Manchester</div>
+                </div>
+                <div class="date">Jun 2021 – Dec 2021</div>
+            </div>
+            <ul>
+                <li>Supported up to 5 squads simultaneously, prioritizing immature squads for maturity gains</li>
+                <li>Facilitated delivery of React Native iOS/Android PLT Marketplace app</li>
+                <li>Supported large-scale Magento decommission and React web frontend transition</li>
+                <li>Partnered with Product function to improve technical knowledge and squad maturity</li>
+            </ul>
+        </div>
+
+        <div class="page-break"></div>
+
+        <div class="experience-item">
+            <div class="experience-header">
+                <div>
+                    <h3>Scrum Master</h3>
+                    <div class="company">Studio Retail, Accrington</div>
+                </div>
+                <div class="date">Feb 2021 – Jun 2021</div>
+            </div>
+        </div>
+
+        <div class="experience-item">
+            <div class="experience-header">
+                <div>
+                    <h3>Scrum Master</h3>
+                    <div class="company">Foreign Currency Direct, Manchester</div>
+                </div>
+                <div class="date">Sep 2019 – Oct 2020</div>
+            </div>
+        </div>
+
+        <div class="experience-item">
+            <div class="experience-header">
+                <div>
+                    <h3>Scrum Master</h3>
+                    <div class="company">Covéa Insurance, Halifax</div>
+                </div>
+                <div class="date">Oct 2018 – Sep 2019</div>
+            </div>
+        </div>
+
+        <div class="experience-item">
+            <div class="experience-header">
+                <div>
+                    <h3>Scrum Master</h3>
+                    <div class="company">Pretty Little Thing, Manchester</div>
+                </div>
+                <div class="date">Oct 2017 – Oct 2018</div>
+            </div>
+        </div>
+
+        <div class="experience-item">
+            <div class="experience-header">
+                <div>
+                    <h3>Project Delivery Manager</h3>
+                    <div class="company">Enghouse Networks, Blackburn</div>
+                </div>
+                <div class="date">Dec 2016 – Oct 2017</div>
+            </div>
+        </div>
+
+        <div class="experience-item">
+            <div class="experience-header">
+                <div>
+                    <h3>Project Delivery Assistant</h3>
+                    <div class="company">Enghouse Networks, Blackburn</div>
+                </div>
+                <div class="date">Aug 2015 – Dec 2016</div>
+            </div>
+        </div>
+
+        <div class="experience-item">
+            <div class="experience-header">
+                <div>
+                    <h3>Project Manager</h3>
+                    <div class="company">Netsells Ltd, Scarborough</div>
+                </div>
+                <div class="date">2013 – 2015</div>
+            </div>
+        </div>
+
+        <h2>Skills & Expertise</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h4>Agile & Frameworks</h4>
+                <ul class="skill-list">
+                    <li>Scrum (Expert)</li>
+                    <li>Scaled Agile (Tribes/SAFe)</li>
+                    <li>Kanban</li>
+                    <li>Agile Coaching</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h4>Leadership</h4>
+                <ul class="skill-list">
+                    <li>Team Building & Scaling</li>
+                    <li>Servant Leadership</li>
+                    <li>Stakeholder Management</li>
+                    <li>Organizational Change</li>
+                </ul>
+            </div>
+        </div>
+
+        <h4 style="margin-top: 1rem;">Tools & Platforms</h4>
+        <div class="tech-tags">
+            <span class="tech-tag">Jira</span>
+            <span class="tech-tag">Confluence</span>
+            <span class="tech-tag">Azure DevOps</span>
+            <span class="tech-tag">Slack</span>
+            <span class="tech-tag">MS Teams</span>
+            <span class="tech-tag">Git</span>
+            <span class="tech-tag">AWS</span>
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">React Native</span>
+        </div>
+
+        <h4 style="margin-top: 1rem;">Additional Capabilities</h4>
+        <div class="tech-tags">
+            <span class="tech-tag">Microservices Architecture</span>
+            <span class="tech-tag">CI/CD Pipelines</span>
+            <span class="tech-tag">API Contract Testing</span>
+            <span class="tech-tag">Business Analysis</span>
+            <span class="tech-tag">Project Management</span>
+            <span class="tech-tag">UX Collaboration</span>
+        </div>
+
+        <h2>Certifications</h2>
+        <div class="cert">
+            <div class="cert-badge">✓</div>
+            <div>
+                <div class="cert-name">Professional Scrum Master I (PSM I)</div>
+                <div class="cert-issuer">Scrum.org</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/greg-rothwell-95bb615a">linkedin.com/in/greg-rothwell-95bb615a</a></p>
+            <p><strong>Portfolio:</strong> <a href="https://gregrothwell.co.uk">gregrothwell.co.uk</a></p>
+            <p style="margin-top: 0.5rem; font-size: 8pt;">For detailed case studies and full portfolio, visit gregrothwell.co.uk</p>
+        </div>
+    </div>
+</body>
+</html>

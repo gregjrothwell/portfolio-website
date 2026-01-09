@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Generate OG Image</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+        #canvas {
+            border: 1px solid #ccc;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>Open Graph Image Generator</h2>
+    <canvas id="canvas" width="1200" height="630"></canvas>
+    <br>
+    <button onclick="downloadImage()">Download og-image.png</button>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Create gradient background
+        const gradient = ctx.createLinearGradient(0, 0, 1200, 630);
+        gradient.addColorStop(0, '#6366f1');
+        gradient.addColorStop(1, '#8b5cf6');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, 1200, 630);
+
+        // Add subtle grid pattern
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+        ctx.lineWidth = 1;
+        for (let i = 0; i < 1200; i += 40) {
+            ctx.beginPath();
+            ctx.moveTo(i, 0);
+            ctx.lineTo(i, 630);
+            ctx.stroke();
+        }
+        for (let i = 0; i < 630; i += 40) {
+            ctx.beginPath();
+            ctx.moveTo(0, i);
+            ctx.lineTo(1200, i);
+            ctx.stroke();
+        }
+
+        // Add text
+        ctx.fillStyle = 'white';
+        ctx.textAlign = 'center';
+
+        // Name
+        ctx.font = 'bold 80px -apple-system, BlinkMacSystemFont, sans-serif';
+        ctx.fillText('Greg Rothwell', 600, 220);
+
+        // Title
+        ctx.font = '48px -apple-system, BlinkMacSystemFont, sans-serif';
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
+        ctx.fillText('Lead Scrum Master', 600, 300);
+
+        // Subtitle
+        ctx.font = '36px -apple-system, BlinkMacSystemFont, sans-serif';
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
+        ctx.fillText('Scaling Agile Teams · Driving Transformation', 600, 360);
+
+        // Stats
+        ctx.font = 'bold 28px -apple-system, BlinkMacSystemFont, sans-serif';
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+        ctx.fillText('11+ Years IT  •  8+ Years Scrum Master  •  PSM I Certified', 600, 450);
+
+        // Website
+        ctx.font = '32px -apple-system, BlinkMacSystemFont, sans-serif';
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+        ctx.fillText('gregrothwell.co.uk', 600, 530);
+
+        function downloadImage() {
+            const link = document.createElement('a');
+            link.download = 'og-image.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+    </script>
+</body>
+</html>

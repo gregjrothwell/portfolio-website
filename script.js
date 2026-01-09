@@ -2,9 +2,25 @@
 const themeToggle = document.getElementById('theme-toggle');
 const html = document.documentElement;
 
-// Check for saved theme preference or default to 'light'
-const currentTheme = localStorage.getItem('theme') || 'light';
-html.setAttribute('data-theme', currentTheme);
+// Check for saved theme preference or detect system preference
+function getPreferredTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        return savedTheme;
+    }
+    // Detect system preference
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
+// Set initial theme
+html.setAttribute('data-theme', getPreferredTheme());
+
+// Listen for system theme changes (if user hasn't set a preference)
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme')) {
+        html.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+    }
+});
 
 themeToggle.addEventListener('click', () => {
     const currentTheme = html.getAttribute('data-theme');
