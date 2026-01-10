@@ -17,20 +17,24 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e)
     }
 });
 
-themeToggle.addEventListener('click', () => {
-    const currentTheme = html.getAttribute('data-theme');
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = html.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
 
-    html.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-});
+        html.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+    });
+}
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            const navHeight = document.querySelector('.navbar').offsetHeight;
+        const navbar = document.querySelector('.navbar');
+
+        if (target && navbar) {
+            const navHeight = navbar.offsetHeight;
             const targetPosition = target.offsetTop - navHeight;
 
             window.scrollTo({
@@ -110,10 +114,13 @@ document.addEventListener('DOMContentLoaded', () => {
     skillBars.forEach(bar => skillObserver.observe(bar));
 });
 
-document.getElementById('download-cv').addEventListener('click', (e) => {
-    e.preventDefault();
+const downloadCvBtn = document.getElementById('download-cv');
 
-    const cvContent = `GREG ROTHWELL
+if (downloadCvBtn) {
+    downloadCvBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        const cvContent = `GREG ROTHWELL
 Lead Scrum Master & Agile Transformation Leader
 
 PROFILE
@@ -185,24 +192,28 @@ For full details and case studies, visit: https://gregrothwell.co.uk
     window.URL.revokeObjectURL(url);
     document.body.removeChild(a);
 
-    const originalText = e.target.textContent;
-    e.target.textContent = 'Downloaded ✓';
-    setTimeout(() => {
-        e.target.textContent = originalText;
-    }, 2000);
-});
+        const originalText = e.target.textContent;
+        e.target.textContent = 'Downloaded ✓';
+        setTimeout(() => {
+            e.target.textContent = originalText;
+        }, 2000);
+    });
+}
 
-let lastScroll = 0;
 const navbar = document.querySelector('.navbar');
 
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
+if (navbar) {
+    let lastScroll = 0;
 
-    if (currentScroll > 100) {
-        navbar.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
-    } else {
-        navbar.style.boxShadow = 'none';
-    }
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
 
-    lastScroll = currentScroll;
-});
+        if (currentScroll > 100) {
+            navbar.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+        } else {
+            navbar.style.boxShadow = 'none';
+        }
+
+        lastScroll = currentScroll;
+    });
+}
