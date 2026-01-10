@@ -67,13 +67,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-window.addEventListener('scroll', () => {
-    const sections = document.querySelectorAll('.section, .hero');
-    const navLinks = document.querySelectorAll('.nav-menu a');
-
+/**
+ * Determines which section is currently active based on scroll position
+ * @param {number} scrollPosition - Current scroll position
+ * @param {Array} sections - Array of section elements
+ * @returns {string} ID of the active section
+ */
+function getCurrentSection(scrollPosition, sections) {
     let current = '';
-    const scrollPosition = window.pageYOffset + SCROLL_OFFSET_NAV;
-
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
@@ -82,6 +83,15 @@ window.addEventListener('scroll', () => {
             current = section.getAttribute('id');
         }
     });
+    return current;
+}
+
+window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('.section, .hero');
+    const navLinks = document.querySelectorAll('.nav-menu a');
+
+    const scrollPosition = window.pageYOffset + SCROLL_OFFSET_NAV;
+    const current = getCurrentSection(scrollPosition, sections);
 
     navLinks.forEach(link => {
         link.style.color = '';
@@ -136,14 +146,12 @@ document.addEventListener('DOMContentLoaded', () => {
     skillBars.forEach(bar => skillObserver.observe(bar));
 });
 
-const downloadCvBtn = document.getElementById('download-cv');
-
-if (downloadCvBtn) {
-    downloadCvBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-
-        try {
-            const cvContent = `GREG ROTHWELL
+/**
+ * Generates CV content as plain text
+ * @returns {string} Formatted CV content
+ */
+function generateCvContent() {
+    return `GREG ROTHWELL
 Lead Scrum Master & Agile Transformation Leader
 
 PROFILE
@@ -204,8 +212,17 @@ Professional Scrum Master I (PSM I) - Scrum.org
 
 For full details and case studies, visit: https://gregrothwell.co.uk
 `;
+}
 
-    const blob = new Blob([cvContent], { type: 'text/plain' });
+const downloadCvBtn = document.getElementById('download-cv');
+
+if (downloadCvBtn) {
+    downloadCvBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        try {
+            const cvContent = generateCvContent();
+            const blob = new Blob([cvContent], { type: 'text/plain' });
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
@@ -249,4 +266,4 @@ if (navbar) {
 }
 
 // Export for testing
-export { getPreferredTheme };
+export { getPreferredTheme, getCurrentSection, generateCvContent };
