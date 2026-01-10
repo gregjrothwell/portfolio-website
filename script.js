@@ -1,21 +1,16 @@
-// Theme Toggle Functionality
 const themeToggle = document.getElementById('theme-toggle');
 const html = document.documentElement;
 
-// Check for saved theme preference or detect system preference
 function getPreferredTheme() {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
         return savedTheme;
     }
-    // Detect system preference
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
 
-// Set initial theme
 html.setAttribute('data-theme', getPreferredTheme());
 
-// Listen for system theme changes (if user hasn't set a preference)
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
     if (!localStorage.getItem('theme')) {
         html.setAttribute('data-theme', e.matches ? 'dark' : 'light');
@@ -30,7 +25,6 @@ themeToggle.addEventListener('click', () => {
     localStorage.setItem('theme', newTheme);
 });
 
-// Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -47,7 +41,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Active navigation state on scroll
 window.addEventListener('scroll', () => {
     const sections = document.querySelectorAll('.section, .hero');
     const navLinks = document.querySelectorAll('.nav-menu a');
@@ -73,7 +66,6 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// Intersection Observer for fade-in animations
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -88,7 +80,6 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe elements for animation
 document.addEventListener('DOMContentLoaded', () => {
     const animatedElements = document.querySelectorAll(
         '.achievement-card, .case-study, .philosophy-card, ' +
@@ -102,7 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
-    // Animate skill bars when they come into view
     const skillBars = document.querySelectorAll('.skill-fill');
     const skillObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -120,11 +110,9 @@ document.addEventListener('DOMContentLoaded', () => {
     skillBars.forEach(bar => skillObserver.observe(bar));
 });
 
-// Download CV functionality
 document.getElementById('download-cv').addEventListener('click', (e) => {
     e.preventDefault();
 
-    // Create a simple text version of the CV
     const cvContent = `GREG ROTHWELL
 Lead Scrum Master & Agile Transformation Leader
 
@@ -187,7 +175,6 @@ Professional Scrum Master I (PSM I) - Scrum.org
 For full details and case studies, visit: https://gregrothwell.co.uk
 `;
 
-    // Create a blob and download
     const blob = new Blob([cvContent], { type: 'text/plain' });
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -198,7 +185,6 @@ For full details and case studies, visit: https://gregrothwell.co.uk
     window.URL.revokeObjectURL(url);
     document.body.removeChild(a);
 
-    // Show feedback
     const originalText = e.target.textContent;
     e.target.textContent = 'Downloaded ✓';
     setTimeout(() => {
@@ -206,7 +192,6 @@ For full details and case studies, visit: https://gregrothwell.co.uk
     }, 2000);
 });
 
-// Navbar background on scroll
 let lastScroll = 0;
 const navbar = document.querySelector('.navbar');
 
