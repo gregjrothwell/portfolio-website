@@ -2,9 +2,13 @@ const themeToggle = document.getElementById('theme-toggle');
 const html = document.documentElement;
 
 function getPreferredTheme() {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        return savedTheme;
+    try {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            return savedTheme;
+        }
+    } catch (e) {
+        console.warn('localStorage not available:', e);
     }
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
@@ -12,7 +16,11 @@ function getPreferredTheme() {
 html.setAttribute('data-theme', getPreferredTheme());
 
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-    if (!localStorage.getItem('theme')) {
+    try {
+        if (!localStorage.getItem('theme')) {
+            html.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+        }
+    } catch (err) {
         html.setAttribute('data-theme', e.matches ? 'dark' : 'light');
     }
 });
@@ -23,7 +31,11 @@ if (themeToggle) {
         const newTheme = currentTheme === 'light' ? 'dark' : 'light';
 
         html.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
+        try {
+            localStorage.setItem('theme', newTheme);
+        } catch (e) {
+            console.warn('Failed to save theme preference:', e);
+        }
     });
 }
 
@@ -120,7 +132,8 @@ if (downloadCvBtn) {
     downloadCvBtn.addEventListener('click', (e) => {
         e.preventDefault();
 
-        const cvContent = `GREG ROTHWELL
+        try {
+            const cvContent = `GREG ROTHWELL
 Lead Scrum Master & Agile Transformation Leader
 
 PROFILE
@@ -192,11 +205,18 @@ For full details and case studies, visit: https://gregrothwell.co.uk
     window.URL.revokeObjectURL(url);
     document.body.removeChild(a);
 
-        const originalText = e.target.textContent;
-        e.target.textContent = 'Downloaded ✓';
-        setTimeout(() => {
-            e.target.textContent = originalText;
-        }, 2000);
+            const originalText = e.target.textContent;
+            e.target.textContent = 'Downloaded ✓';
+            setTimeout(() => {
+                e.target.textContent = originalText;
+            }, 2000);
+        } catch (error) {
+            console.error('Failed to download CV:', error);
+            e.target.textContent = 'Download failed';
+            setTimeout(() => {
+                e.target.textContent = 'Download CV';
+            }, 2000);
+        }
     });
 }
 
