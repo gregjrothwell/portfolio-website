@@ -28,3 +28,10 @@ Temporary Items
 *.swp
 *.swo
 *~
+
+# Node.js
+node_modules/
+*.log
+npm-debug.log*
+coverage/
+.vitest-cache/
