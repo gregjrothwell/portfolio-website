@@ -1,6 +1,10 @@
 const themeToggle = document.getElementById('theme-toggle');
 const html = document.documentElement;
 
+/**
+ * Gets user's preferred theme with fallback chain: localStorage → system preference
+ * @returns {'dark' | 'light'} Theme preference
+ */
 function getPreferredTheme() {
     try {
         const savedTheme = localStorage.getItem('theme');
