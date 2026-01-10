@@ -1,3 +1,9 @@
+const SCROLL_OFFSET_NAV = 100;
+const SCROLL_THRESHOLD_NAVBAR_SHADOW = 100;
+const INTERSECTION_THRESHOLD = 0.1;
+const SKILL_BAR_ANIMATION_DELAY = 100;
+const DOWNLOAD_FEEDBACK_DURATION = 2000;
+
 const themeToggle = document.getElementById('theme-toggle');
 const html = document.documentElement;
 
@@ -66,7 +72,7 @@ window.addEventListener('scroll', () => {
     const navLinks = document.querySelectorAll('.nav-menu a');
 
     let current = '';
-    const scrollPosition = window.pageYOffset + 100;
+    const scrollPosition = window.pageYOffset + SCROLL_OFFSET_NAV;
 
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
@@ -87,7 +93,7 @@ window.addEventListener('scroll', () => {
 });
 
 const observerOptions = {
-    threshold: 0.1,
+    threshold: INTERSECTION_THRESHOLD,
     rootMargin: '0px 0px -50px 0px'
 };
 
@@ -121,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 entry.target.style.width = '0';
                 setTimeout(() => {
                     entry.target.style.width = width;
-                }, 100);
+                }, SKILL_BAR_ANIMATION_DELAY);
                 skillObserver.unobserve(entry.target);
             }
         });
@@ -213,13 +219,13 @@ For full details and case studies, visit: https://gregrothwell.co.uk
             e.target.textContent = 'Downloaded ✓';
             setTimeout(() => {
                 e.target.textContent = originalText;
-            }, 2000);
+            }, DOWNLOAD_FEEDBACK_DURATION);
         } catch (error) {
             console.error('Failed to download CV:', error);
             e.target.textContent = 'Download failed';
             setTimeout(() => {
                 e.target.textContent = 'Download CV';
-            }, 2000);
+            }, DOWNLOAD_FEEDBACK_DURATION);
         }
     });
 }
@@ -232,7 +238,7 @@ if (navbar) {
     window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset;
 
-        if (currentScroll > 100) {
+        if (currentScroll > SCROLL_THRESHOLD_NAVBAR_SHADOW) {
             navbar.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
         } else {
             navbar.style.boxShadow = 'none';
