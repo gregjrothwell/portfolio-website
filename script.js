@@ -35,18 +35,49 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e)
     }
 });
 
+/**
+ * Toggles theme and saves preference
+ * @param {string} currentTheme - Current theme value
+ * @returns {string} New theme value
+ */
+function toggleTheme(currentTheme) {
+    return currentTheme === 'light' ? 'dark' : 'light';
+}
+
+/**
+ * Saves theme preference to localStorage
+ * @param {string} theme - Theme to save
+ * @returns {boolean} Whether save was successful
+ */
+function saveThemePreference(theme) {
+    try {
+        localStorage.setItem('theme', theme);
+        return true;
+    } catch (e) {
+        console.warn('Failed to save theme preference:', e);
+        return false;
+    }
+}
+
 if (themeToggle) {
     themeToggle.addEventListener('click', () => {
         const currentTheme = html.getAttribute('data-theme');
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        const newTheme = toggleTheme(currentTheme);
 
         html.setAttribute('data-theme', newTheme);
-        try {
-            localStorage.setItem('theme', newTheme);
-        } catch (e) {
-            console.warn('Failed to save theme preference:', e);
-        }
+        saveThemePreference(newTheme);
     });
+}
+
+/**
+ * Calculates target scroll position for smooth anchor navigation
+ * @param {Element} target - Target element to scroll to
+ * @param {Element} navbar - Navbar element
+ * @returns {number} Target scroll position
+ */
+function calculateScrollPosition(target, navbar) {
+    const navHeight = navbar.offsetHeight;
+    return target.offsetTop - navHeight;
 }
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -56,8 +87,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         const navbar = document.querySelector('.navbar');
 
         if (target && navbar) {
-            const navHeight = navbar.offsetHeight;
-            const targetPosition = target.offsetTop - navHeight;
+            const targetPosition = calculateScrollPosition(target, navbar);
 
             window.scrollTo({
                 top: targetPosition,
@@ -86,35 +116,102 @@ function getCurrentSection(scrollPosition, sections) {
     return current;
 }
 
+/**
+ * Updates navigation link colors based on active section
+ * @param {string} activeSectionId - ID of the currently active section
+ * @param {NodeList} navLinks - Navigation link elements
+ * @param {string} primaryColor - Primary color value to use for active link
+ */
+function updateNavLinkColors(activeSectionId, navLinks, primaryColor) {
+    navLinks.forEach(link => {
+        link.style.color = '';
+        if (link.getAttribute('href') === `#${activeSectionId}`) {
+            link.style.color = primaryColor;
+        }
+    });
+}
+
 window.addEventListener('scroll', () => {
     const sections = document.querySelectorAll('.section, .hero');
     const navLinks = document.querySelectorAll('.nav-menu a');
 
     const scrollPosition = window.pageYOffset + SCROLL_OFFSET_NAV;
     const current = getCurrentSection(scrollPosition, sections);
+    const primaryColor = getComputedStyle(document.documentElement)
+        .getPropertyValue('--primary-color');
 
-    navLinks.forEach(link => {
-        link.style.color = '';
-        if (link.getAttribute('href') === `#${current}`) {
-            link.style.color = getComputedStyle(document.documentElement)
-                .getPropertyValue('--primary-color');
-        }
-    });
+    updateNavLinkColors(current, navLinks, primaryColor);
 });
+
+/**
+ * Applies fade-in animation to element
+ * @param {Element} element - Element to animate
+ */
+function applyFadeInAnimation(element) {
+    element.style.opacity = '1';
+    element.style.transform = 'translateY(0)';
+}
+
+/**
+ * Creates intersection observer callback for fade-in animations
+ * @returns {Function} Observer callback
+ */
+function createFadeInObserverCallback() {
+    return (entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                applyFadeInAnimation(entry.target);
+            }
+        });
+    };
+}
 
 const observerOptions = {
     threshold: INTERSECTION_THRESHOLD,
     rootMargin: '0px 0px -50px 0px'
 };
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
+const observer = new IntersectionObserver(createFadeInObserverCallback(), observerOptions);
+
+/**
+ * Prepares element for fade-in animation
+ * @param {Element} element - Element to prepare
+ */
+function prepareElementForAnimation(element) {
+    element.style.opacity = '0';
+    element.style.transform = 'translateY(30px)';
+    element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+}
+
+/**
+ * Animates skill bar width
+ * @param {Element} skillBar - Skill bar element
+ * @param {number} delay - Animation delay in ms
+ */
+function animateSkillBar(skillBar, delay) {
+    const width = skillBar.style.width;
+    skillBar.style.width = '0';
+    setTimeout(() => {
+        skillBar.style.width = width;
+    }, delay);
+}
+
+/**
+ * Creates intersection observer callback for skill bars
+ * @param {IntersectionObserver} observer - Observer instance to unobserve after animation
+ * @param {number} delay - Animation delay
+ * @returns {Function} Observer callback
+ */
+function createSkillBarObserverCallback(observer, delay) {
+    return (entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateSkillBar(entry.target, delay);
+                observer.unobserve(entry.target);
+            }
+        });
+    };
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     const animatedElements = document.querySelectorAll(
@@ -123,27 +220,20 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
     animatedElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        prepareElementForAnimation(el);
         observer.observe(el);
     });
 
     const skillBars = document.querySelectorAll('.skill-fill');
-    const skillObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const width = entry.target.style.width;
-                entry.target.style.width = '0';
-                setTimeout(() => {
-                    entry.target.style.width = width;
-                }, SKILL_BAR_ANIMATION_DELAY);
-                skillObserver.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
+    const skillObserver = new IntersectionObserver(
+        createSkillBarObserverCallback(null, SKILL_BAR_ANIMATION_DELAY),
+        observerOptions
+    );
 
-    skillBars.forEach(bar => skillObserver.observe(bar));
+    const callback = createSkillBarObserverCallback(skillObserver, SKILL_BAR_ANIMATION_DELAY);
+    const actualSkillObserver = new IntersectionObserver(callback, observerOptions);
+
+    skillBars.forEach(bar => actualSkillObserver.observe(bar));
 });
 
 /**
@@ -249,13 +339,23 @@ if (downloadCvBtn) {
 
 const navbar = document.querySelector('.navbar');
 
+/**
+ * Determines if navbar should have shadow based on scroll position
+ * @param {number} scrollPosition - Current scroll position
+ * @param {number} threshold - Scroll threshold for shadow
+ * @returns {boolean} Whether shadow should be shown
+ */
+function shouldShowNavbarShadow(scrollPosition, threshold) {
+    return scrollPosition > threshold;
+}
+
 if (navbar) {
     let lastScroll = 0;
 
     window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset;
 
-        if (currentScroll > SCROLL_THRESHOLD_NAVBAR_SHADOW) {
+        if (shouldShowNavbarShadow(currentScroll, SCROLL_THRESHOLD_NAVBAR_SHADOW)) {
             navbar.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
         } else {
             navbar.style.boxShadow = 'none';
@@ -266,4 +366,18 @@ if (navbar) {
 }
 
 // Export for testing
-export { getPreferredTheme, getCurrentSection, generateCvContent };
+export {
+    getPreferredTheme,
+    getCurrentSection,
+    generateCvContent,
+    updateNavLinkColors,
+    shouldShowNavbarShadow,
+    toggleTheme,
+    saveThemePreference,
+    calculateScrollPosition,
+    applyFadeInAnimation,
+    createFadeInObserverCallback,
+    prepareElementForAnimation,
+    animateSkillBar,
+    createSkillBarObserverCallback
+};
