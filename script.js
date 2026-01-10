@@ -247,3 +247,6 @@ if (navbar) {
         lastScroll = currentScroll;
     });
 }
+
+// Export for testing
+export { getPreferredTheme };

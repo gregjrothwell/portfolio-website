@@ -1,0 +1,21 @@
+{
+  "name": "portfolio-website",
+  "version": "1.0.0",
+  "description": "Greg Rothwell Portfolio Website",
+  "type": "module",
+  "scripts": {
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage",
+    "test:run": "vitest run"
+  },
+  "keywords": [],
+  "author": "Greg Rothwell",
+  "license": "ISC",
+  "devDependencies": {
+    "vitest": "^2.0.0",
+    "@vitest/ui": "^2.0.0",
+    "jsdom": "^25.0.0",
+    "happy-dom": "^15.0.0"
+  }
+}
