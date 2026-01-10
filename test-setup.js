@@ -22,6 +22,13 @@ Object.defineProperty(window, 'matchMedia', {
   })),
 });
 
+global.IntersectionObserver = vi.fn().mockImplementation(() => ({
+  observe: vi.fn(),
+  unobserve: vi.fn(),
+  disconnect: vi.fn(),
+}));
+
 beforeEach(() => {
   vi.clearAllMocks();
+  document.body.innerHTML = '';
 });
