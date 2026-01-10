@@ -2,8 +2,8 @@
 
 Professional portfolio website showcasing experience as a Lead Scrum Master & Agile Transformation Leader.
 
-[![Tests](https://img.shields.io/badge/tests-19%20passing-success)](package.json)
-[![Coverage](https://img.shields.io/badge/coverage-50.22%25-yellow)](package.json)
+[![Tests](https://img.shields.io/badge/tests-49%20passing-success)](package.json)
+[![Coverage](https://img.shields.io/badge/coverage-71.93%25-brightgreen)](package.json)
 [![Functions](https://img.shields.io/badge/functions-100%25-success)](package.json)
 
 ## ✨ Features
@@ -13,7 +13,7 @@ Professional portfolio website showcasing experience as a Lead Scrum Master & Ag
 - **Smooth Animations** - Intersection Observer-based scroll effects
 - **CV Download** - Professional CV download functionality
 - **Active Navigation** - Auto-highlighting based on scroll position
-- **Production Ready** - 50% test coverage with comprehensive error handling
+- **Production Ready** - 72% test coverage with comprehensive error handling
 
 ## 🧪 Testing
 
@@ -43,14 +43,17 @@ npm run test:ui
 ```
 File       | % Stmts | % Branch | % Funcs | % Lines
 -----------|---------|----------|---------|----------
-script.js  |  50.22% |  78.57%  |   100%  |  50.22%
+script.js  |  71.93% |  91.66%  |   100%  |  71.93%
 ```
 
-**Test Suite:** 19 comprehensive tests covering:
-- Theme detection with localStorage fallback
-- Active section detection from scroll position
-- CV content generation and validation
-- Error handling for storage and download operations
+**Test Suite:** 49 comprehensive tests covering:
+- Theme system (6 tests): localStorage fallback, system preference detection, error handling
+- Navigation (7 tests): Section detection, link highlighting, scroll calculations
+- CV generation (9 tests): Content validation, all sections present
+- Scroll behavior (4 tests): Navbar shadow, position calculations
+- Animations (10 tests): Fade-in effects, skill bar animations, element preparation
+- Observer callbacks (8 tests): Intersection observer logic, callback factories
+- Click handlers (5 tests): Theme toggle, anchor navigation, scroll positioning
 
 ## 🛠️ Tech Stack
 
@@ -65,8 +68,8 @@ script.js  |  50.22% |  78.57%  |   100%  |  50.22%
 ```
 portfolio-website/
 ├── index.html          # Main HTML file
-├── script.js           # Core functionality (269 lines, ES6 module)
-├── script.test.js      # Test suite (141 lines, 19 tests)
+├── script.js           # Core functionality (383 lines, ES6 module)
+├── script.test.js      # Test suite (449 lines, 49 tests)
 ├── vitest.config.js    # Vitest configuration
 ├── test-setup.js       # Test mocks (IntersectionObserver, localStorage, matchMedia)
 ├── package.json        # Dependencies and scripts
