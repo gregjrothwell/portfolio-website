@@ -46,3 +46,20 @@ Thread: https://ampcode.com/threads/$AMP_CURRENT_THREAD_ID
   - All existing tests still pass (49 tests)
 ---
 
+## [2026-01-22 00:07] - US-002
+Thread: https://ampcode.com/threads/$AMP_CURRENT_THREAD_ID
+- Added comprehensive print stylesheet for clean CV printing
+- Files changed: styles.css
+- Implemented @media print rules with light theme colors
+- Hidden all interactive elements (nav, theme toggle, footer)
+- Removed animations and transitions for print
+- Optimized layout for A4 with proper spacing (using cm units)
+- Added page-break controls to keep related content together
+- **Learnings for future iterations:**
+  - Print styles use !important to override theme variables
+  - Use cm/pt units for print instead of rem/px for consistency
+  - page-break-inside: avoid keeps cards together
+  - External link URLs shown with ::after pseudo-elements
+  - Force all backgrounds to white and text to black for readability
+---
+
