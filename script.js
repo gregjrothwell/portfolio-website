@@ -220,7 +220,7 @@ function createSkillBarObserverCallback(observer, delay) {
 
 document.addEventListener('DOMContentLoaded', () => {
     const animatedElements = document.querySelectorAll(
-        '.achievement-card, .case-study, .philosophy-card, ' +
+        '.achievement-card, .case-study, .testimonial-card, .philosophy-card, ' +
         '.interest-card, .timeline-item, .stat-card, .about-text'
     );
 
