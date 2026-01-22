@@ -63,3 +63,20 @@ Thread: https://ampcode.com/threads/$AMP_CURRENT_THREAD_ID
   - Force all backgrounds to white and text to black for readability
 ---
 
+## [2026-01-22 00:08] - US-003
+Thread: https://ampcode.com/threads/$AMP_CURRENT_THREAD_ID
+- Added testimonials section with 4 testimonial cards
+- Files changed: index.html, styles.css, script.js
+- Section positioned between case-studies and philosophy as specified
+- Implemented responsive grid layout (auto-fit, min 300px)
+- Added hover effects matching achievement cards
+- Added decorative quote marks with ::before pseudo-element
+- Updated navigation (desktop + mobile) to include testimonials
+- **Learnings for future iterations:**
+  - Card layout follows existing pattern: grid with hover effects
+  - Quote styling uses italic text with decorative quote mark (opacity 0.3)
+  - Author section separated with border-top
+  - Added to intersection observer for fade-in animations
+  - Print styles keep testimonials readable in monochrome
+---
+
