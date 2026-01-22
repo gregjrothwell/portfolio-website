@@ -24,5 +24,25 @@
 - Maintain consistent spacing (6rem padding on sections)
 - Use semantic HTML (section, article, nav, etc.)
 
+### Mobile Patterns
+- Mobile menu shows on screens < 768px (matches existing breakpoint)
+- Use fixed positioning with z-index layering: overlay (999), menu (1000), toggle (1001)
+- Prevent body scroll when menu is open: `document.body.style.overflow = 'hidden'`
+
+---
+
+## [2026-01-22 00:06] - US-001
+Thread: https://ampcode.com/threads/$AMP_CURRENT_THREAD_ID
+- Implemented mobile navigation menu with hamburger icon
+- Files changed: index.html, styles.css, script.js
+- Added slide-out navigation with smooth animations
+- Implemented keyboard accessibility (ESC to close, focus management)
+- Added ARIA labels to all navigation links and interactive elements
+- **Learnings for future iterations:**
+  - Mobile menu visibility controlled via @media (max-width: 768px)
+  - Hamburger icon uses transform animations for X transition
+  - Overlay + menu use separate elements for better accessibility
+  - Focus management: first link gets focus when menu opens
+  - All existing tests still pass (49 tests)
 ---
 
