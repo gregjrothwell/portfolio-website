@@ -80,3 +80,21 @@ Thread: https://ampcode.com/threads/$AMP_CURRENT_THREAD_ID
   - Print styles keep testimonials readable in monochrome
 ---
 
+## [2026-01-22 00:10] - US-004
+Thread: https://ampcode.com/threads/$AMP_CURRENT_THREAD_ID
+- Added projects section after philosophy section
+- Files changed: index.html, styles.css, script.js
+- Section includes 4 project cards with realistic examples
+- Each card shows title, description, tech stack tags, and links/status
+- Implemented responsive grid (auto-fit, min 320px)
+- Hover effects match existing card patterns
+- Links styled with icons (GitHub) or status indicators (Private/Internal)
+- Updated navigation (desktop + mobile) to include projects
+- **Learnings for future iterations:**
+  - Project links use flex layout with SVG icons
+  - project-status class for non-link indicators (Private Repository, Internal Tool)
+  - Tech tags reuse existing .tech-tag styling from skills section
+  - Card layout: title → description → tech → links (flex column with flex-grow)
+  - Print styles hide links, keep content readable
+---
+
