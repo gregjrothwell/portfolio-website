@@ -644,6 +644,73 @@ body {
     line-height: 1.7;
 }
 
+/* Testimonials Section */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.testimonial-card {
+    background: var(--bg-primary);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--card-shadow-hover);
+    border-color: var(--primary-color);
+}
+
+.testimonial-quote {
+    margin-bottom: 1.5rem;
+}
+
+.testimonial-quote p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-size: 1.05rem;
+    font-style: italic;
+    position: relative;
+}
+
+.testimonial-quote p::before {
+    content: '"';
+    font-size: 3rem;
+    color: var(--primary-color);
+    position: absolute;
+    top: -1rem;
+    left: -0.5rem;
+    opacity: 0.3;
+    font-family: Georgia, serif;
+}
+
+.testimonial-author {
+    border-top: 2px solid var(--border-color);
+    padding-top: 1rem;
+}
+
+.testimonial-name {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.testimonial-role {
+    font-size: 0.95rem;
+    color: var(--text-tertiary);
+}
+
 /* Philosophy Section */
 .philosophy-content {
     display: grid;
@@ -966,6 +1033,10 @@ footer {
         grid-template-columns: 1fr;
     }
 
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+
     .philosophy-content {
         grid-template-columns: 1fr;
     }
@@ -1268,6 +1339,34 @@ footer {
 
     .case-study-content p,
     .case-study-content li {
+        font-size: 9pt;
+    }
+
+    /* Testimonials */
+    .testimonials-grid {
+        display: block;
+    }
+
+    .testimonial-card {
+        margin-bottom: 0.5cm;
+        padding: 0.4cm;
+        border: 1pt solid black;
+        page-break-inside: avoid;
+    }
+
+    .testimonial-quote p {
+        font-size: 9pt;
+    }
+
+    .testimonial-quote p::before {
+        display: none;
+    }
+
+    .testimonial-name {
+        font-size: 10pt;
+    }
+
+    .testimonial-role {
         font-size: 9pt;
     }
 
