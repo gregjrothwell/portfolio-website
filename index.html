@@ -766,6 +766,44 @@
         </div>
     </section>
 
+    <section id="articles" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Articles & Insights</h2>
+                <p class="section-subtitle">Thoughts on agile transformation and team leadership</p>
+            </div>
+            <div class="articles-grid">
+                <article class="article-card">
+                    <div class="article-meta">
+                        <span class="article-date">March 15, 2025</span>
+                        <span class="article-read-time">8 min read</span>
+                    </div>
+                    <h3>Scaling Scrum Beyond 10 Teams: Lessons from the Trenches</h3>
+                    <p>When squad numbers exceed 10, the communication overhead becomes exponential. Here's how we implemented a tribe-based model that preserved autonomy while improving collaboration. We'll explore the warning signs, transition challenges, and the metrics that proved we made the right call.</p>
+                    <a href="#" class="article-link">Read article →</a>
+                </article>
+                <article class="article-card">
+                    <div class="article-meta">
+                        <span class="article-date">February 8, 2025</span>
+                        <span class="article-read-time">6 min read</span>
+                    </div>
+                    <h3>Breaking Down UX Silos: Why Embedded Designers Win</h3>
+                    <p>The traditional model of centralized UX teams creates bottlenecks. This deep dive examines how we embedded UX directly into delivery squads, the resistance we encountered, and the dramatic improvement in both velocity and quality that followed.</p>
+                    <a href="#" class="article-link">Read article →</a>
+                </article>
+                <article class="article-card">
+                    <div class="article-meta">
+                        <span class="article-date">January 22, 2025</span>
+                        <span class="article-read-time">7 min read</span>
+                    </div>
+                    <h3>The Myth of Agile Purity: When to Break the Rules</h3>
+                    <p>Following Scrum by the book sounds great in theory. In practice, real organizations need pragmatic adaptation. Learn when it's appropriate to bend the rules, which principles are non-negotiable, and how to make evidence-based decisions about your agile framework.</p>
+                    <a href="#" class="article-link">Read article →</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
     <section id="interests" class="section section-dark">
         <div class="container">
             <div class="section-header">
@@ -805,6 +843,31 @@
             </div>
             <div class="contact-content">
                 <p>I'm always open to conversations about scaling agile teams, breaking down organizational silos, or exploring new challenges in delivery leadership.</p>
+
+                <form id="contact-form" class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name <span class="required">*</span></label>
+                        <input type="text" id="name" name="name" required aria-required="true">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required aria-required="true">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message <span class="required">*</span></label>
+                        <textarea id="message" name="message" rows="5" required aria-required="true"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary submit-btn">
+                        <span class="btn-text">Send Message</span>
+                        <span class="btn-loading" style="display: none;">Sending...</span>
+                    </button>
+
+                    <div class="form-message" id="form-message" role="alert" aria-live="polite"></div>
+                </form>
+
                 <div class="contact-links">
                     <a href="https://www.linkedin.com/in/greg-rothwell-95bb615a" class="contact-button" target="_blank" rel="noopener noreferrer">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -813,7 +876,8 @@
                         Connect on LinkedIn
                     </a>
                 </div>
-                <p class="contact-note">Other contact details available upon request.</p>
+
+                <p class="contact-note">NOTE: Replace YOUR_FORM_ID in the form action with your Formspree endpoint after email verification at https://formspree.io/</p>
             </div>
         </div>
     </section>
@@ -824,6 +888,6 @@
         </div>
     </footer>
 
-    <script type="module" src="script.js"></script>
+    <script type="module" src="script.js" defer></script>
 </body>
 </html>

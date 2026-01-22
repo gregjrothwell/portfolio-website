@@ -218,10 +218,13 @@ function createSkillBarObserverCallback(observer, delay) {
     };
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+/**
+ * Initializes lazy loading for animations using IntersectionObserver
+ */
+function initLazyAnimations() {
     const animatedElements = document.querySelectorAll(
         '.achievement-card, .case-study, .testimonial-card, .philosophy-card, ' +
-        '.project-card, .interest-card, .timeline-item, .stat-card, .about-text'
+        '.project-card, .article-card, .interest-card, .timeline-item, .stat-card, .about-text'
     );
 
     animatedElements.forEach(el => {
@@ -230,16 +233,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const skillBars = document.querySelectorAll('.skill-fill');
-    const skillObserver = new IntersectionObserver(
-        createSkillBarObserverCallback(null, SKILL_BAR_ANIMATION_DELAY),
-        observerOptions
-    );
-
-    const callback = createSkillBarObserverCallback(skillObserver, SKILL_BAR_ANIMATION_DELAY);
+    const callback = createSkillBarObserverCallback(null, SKILL_BAR_ANIMATION_DELAY);
     const actualSkillObserver = new IntersectionObserver(callback, observerOptions);
 
     skillBars.forEach(bar => actualSkillObserver.observe(bar));
-});
+}
+
+document.addEventListener('DOMContentLoaded', initLazyAnimations);
 
 /**
  * Generates CV content as plain text
@@ -432,6 +432,54 @@ document.addEventListener('keydown', (e) => {
         }
     }
 });
+
+// Contact form handling
+const contactForm = document.getElementById('contact-form');
+const formMessage = document.getElementById('form-message');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const submitBtn = contactForm.querySelector('.submit-btn');
+        const btnText = submitBtn.querySelector('.btn-text');
+        const btnLoading = submitBtn.querySelector('.btn-loading');
+
+        // Show loading state
+        btnText.style.display = 'none';
+        btnLoading.style.display = 'inline';
+        submitBtn.disabled = true;
+        formMessage.style.display = 'none';
+        formMessage.className = 'form-message';
+
+        try {
+            const formData = new FormData(contactForm);
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                formMessage.textContent = "Thanks! I'll get back to you soon.";
+                formMessage.classList.add('success');
+                contactForm.reset();
+            } else {
+                throw new Error('Form submission failed');
+            }
+        } catch (error) {
+            formMessage.textContent = 'Oops! There was a problem sending your message. Please try again or connect via LinkedIn.';
+            formMessage.classList.add('error');
+        } finally {
+            // Reset button state
+            btnText.style.display = 'inline';
+            btnLoading.style.display = 'none';
+            submitBtn.disabled = false;
+        }
+    });
+}
 
 // Export for testing
 export {
