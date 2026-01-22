@@ -98,3 +98,19 @@ Thread: https://ampcode.com/threads/$AMP_CURRENT_THREAD_ID
   - Print styles hide links, keep content readable
 ---
 
+## [2026-01-22 00:11] - US-005
+Thread: https://ampcode.com/threads/$AMP_CURRENT_THREAD_ID
+- Improved accessibility with focus states and skip link
+- Files changed: index.html, styles.css
+- Added skip-to-content link (hidden until focused, top: -100px)
+- Enhanced focus states for all interactive elements
+- Skip link navigates to #main-content on hero section
+- Focus outlines: 3px + 2px offset for buttons/links, 2px + 4px for nav
+- **Learnings for future iterations:**
+  - Skip link positioned absolute with high z-index (10000)
+  - Use :focus pseudo-class to show skip link (top: 0)
+  - Consistent outline color using --primary-color variable
+  - Heading hierarchy already correct: h1 (hero) → h2 (sections) → h3 (cards)
+  - ARIA labels already complete from US-001
+---
+
