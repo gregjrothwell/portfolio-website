@@ -4,6 +4,11 @@ const INTERSECTION_THRESHOLD = 0.1;
 const SKILL_BAR_ANIMATION_DELAY = 100;
 const DOWNLOAD_FEEDBACK_DURATION = 2000;
 
+const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+const mobileMenuLinks = document.querySelectorAll('.mobile-menu a');
+
 const themeToggle = document.getElementById('theme-toggle');
 const html = document.documentElement;
 
@@ -365,6 +370,69 @@ if (navbar) {
     });
 }
 
+/**
+ * Opens the mobile menu
+ */
+function openMobileMenu() {
+    if (mobileMenu && mobileMenuOverlay && mobileMenuToggle) {
+        mobileMenu.classList.add('active');
+        mobileMenuOverlay.classList.add('active');
+        mobileMenuToggle.setAttribute('aria-expanded', 'true');
+        mobileMenuOverlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+
+        const firstLink = mobileMenu.querySelector('a');
+        if (firstLink) {
+            firstLink.focus();
+        }
+    }
+}
+
+/**
+ * Closes the mobile menu
+ */
+function closeMobileMenu() {
+    if (mobileMenu && mobileMenuOverlay && mobileMenuToggle) {
+        mobileMenu.classList.remove('active');
+        mobileMenuOverlay.classList.remove('active');
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        mobileMenuOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+}
+
+/**
+ * Toggles the mobile menu open/closed state
+ */
+function toggleMobileMenu() {
+    if (mobileMenu && mobileMenu.classList.contains('active')) {
+        closeMobileMenu();
+    } else {
+        openMobileMenu();
+    }
+}
+
+if (mobileMenuToggle) {
+    mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+}
+
+if (mobileMenuOverlay) {
+    mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+}
+
+mobileMenuLinks.forEach(link => {
+    link.addEventListener('click', closeMobileMenu);
+});
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('active')) {
+        closeMobileMenu();
+        if (mobileMenuToggle) {
+            mobileMenuToggle.focus();
+        }
+    }
+});
+
 // Export for testing
 export {
     getPreferredTheme,
@@ -379,5 +447,8 @@ export {
     createFadeInObserverCallback,
     prepareElementForAnimation,
     animateSkillBar,
-    createSkillBarObserverCallback
+    createSkillBarObserverCallback,
+    openMobileMenu,
+    closeMobileMenu,
+    toggleMobileMenu
 };

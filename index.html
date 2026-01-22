@@ -72,32 +72,53 @@
         <div class="container">
             <div class="nav-brand">GR</div>
             <ul class="nav-menu">
-                <li><a href="#about">About</a></li>
-                <li><a href="#achievements">Achievements</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#case-studies">Case Studies</a></li>
-                <li><a href="#philosophy">Philosophy</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#about" aria-label="Navigate to About section">About</a></li>
+                <li><a href="#achievements" aria-label="Navigate to Achievements section">Achievements</a></li>
+                <li><a href="#experience" aria-label="Navigate to Experience section">Experience</a></li>
+                <li><a href="#case-studies" aria-label="Navigate to Case Studies section">Case Studies</a></li>
+                <li><a href="#philosophy" aria-label="Navigate to Philosophy section">Philosophy</a></li>
+                <li><a href="#skills" aria-label="Navigate to Skills section">Skills</a></li>
+                <li><a href="#contact" aria-label="Navigate to Contact section">Contact</a></li>
             </ul>
-            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
-                <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="5"/>
-                    <line x1="12" y1="1" x2="12" y2="3"/>
-                    <line x1="12" y1="21" x2="12" y2="23"/>
-                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-                    <line x1="1" y1="12" x2="3" y2="12"/>
-                    <line x1="21" y1="12" x2="23" y2="12"/>
-                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-                </svg>
-                <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-                </svg>
-            </button>
+            <div class="nav-controls">
+                <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+                    <span class="hamburger-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </button>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                    <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+            </div>
         </div>
     </nav>
+    <div class="mobile-menu-overlay" id="mobile-menu-overlay" aria-hidden="true"></div>
+    <div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+        <ul class="mobile-menu-list">
+            <li><a href="#about" aria-label="Navigate to About section">About</a></li>
+            <li><a href="#achievements" aria-label="Navigate to Achievements section">Achievements</a></li>
+            <li><a href="#experience" aria-label="Navigate to Experience section">Experience</a></li>
+            <li><a href="#case-studies" aria-label="Navigate to Case Studies section">Case Studies</a></li>
+            <li><a href="#philosophy" aria-label="Navigate to Philosophy section">Philosophy</a></li>
+            <li><a href="#skills" aria-label="Navigate to Skills section">Skills</a></li>
+            <li><a href="#contact" aria-label="Navigate to Contact section">Contact</a></li>
+        </ul>
+    </div>
 
     <header class="hero">
         <div class="container">
@@ -106,8 +127,8 @@
                 <h1>Scaling Agile Teams.<br>Driving Transformation.</h1>
                 <p class="hero-description">11 years building high-performing teams and challenging the status quo in fast-paced environments—from digital agencies to multinational corporations.</p>
                 <div class="hero-cta">
-                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
-                    <a href="#" id="download-cv" class="btn btn-secondary">Download CV</a>
+                    <a href="#contact" class="btn btn-primary" aria-label="Contact Greg Rothwell">Get In Touch</a>
+                    <a href="#" id="download-cv" class="btn btn-secondary" aria-label="Download CV as text file">Download CV</a>
                 </div>
             </div>
         </div>

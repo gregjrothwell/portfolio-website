@@ -1,0 +1,28 @@
+# Ralph Progress Log - Portfolio Website Enhancements
+
+**Started:** Wed Jan 21 23:58:47 GMT 2026
+**Branch:** ralph/portfolio-enhancements
+**Total Stories:** 8
+**Budget:** $5.00
+
+---
+
+## Codebase Patterns
+
+### Testing
+- Run tests after every change: `npm run test:run`
+- Tests must pass before committing
+- Update tests if adding new JavaScript functionality
+
+### Styling
+- Use CSS custom properties (--primary-color, --bg-tertiary, etc.)
+- Follow existing responsive breakpoints: 968px, 768px, 480px
+- Match animation patterns (fade-in, intersection observer)
+
+### HTML Structure
+- Sections follow pattern: .section > .container > .section-header + content
+- Maintain consistent spacing (6rem padding on sections)
+- Use semantic HTML (section, article, nav, etc.)
+
+---
+

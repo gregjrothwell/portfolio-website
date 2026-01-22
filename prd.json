@@ -1,0 +1,153 @@
+{
+  "project": "Greg Rothwell Portfolio Website",
+  "branchName": "ralph/portfolio-enhancements",
+  "description": "Portfolio website enhancements - mobile nav, contact form, accessibility, and content additions",
+  "userStories": [
+    {
+      "id": "US-001",
+      "title": "Add mobile navigation menu",
+      "description": "As a mobile user, I want to access the navigation menu so I can browse all sections of the site.",
+      "acceptanceCriteria": [
+        "Hamburger menu icon visible on screens < 768px",
+        "Tapping hamburger opens slide-out navigation menu",
+        "Menu includes all existing nav links (About, Achievements, Experience, etc.)",
+        "Menu closes when clicking outside or selecting a link",
+        "Smooth animation for menu open/close",
+        "Accessible via keyboard (focus states, ESC to close)",
+        "Tests pass (npm run test:run)",
+        "Verify in browser using dev-browser skill or manual mobile testing"
+      ],
+      "priority": 1,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-002",
+      "title": "Add print stylesheet",
+      "description": "As a recruiter, I want to print a clean version of the CV so I can review it offline.",
+      "acceptanceCriteria": [
+        "Create @media print CSS rules",
+        "Remove dark theme colors (use light colors only)",
+        "Hide navigation, theme toggle, and footer",
+        "Remove animations and transitions",
+        "Optimize layout for A4 page size",
+        "Ensure all text is black on white background",
+        "Page breaks positioned sensibly between sections",
+        "Tests pass (npm run test:run)"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-003",
+      "title": "Add testimonials section",
+      "description": "As a potential employer, I want to see recommendations from colleagues so I can validate Greg's expertise.",
+      "acceptanceCriteria": [
+        "New section between case-studies and philosophy sections",
+        "Section titled 'Testimonials' or 'What People Say'",
+        "Include 3-4 testimonial cards with: quote, name, role, company",
+        "Use placeholder content (Greg can update later with real testimonials)",
+        "Responsive grid layout matching existing design patterns",
+        "Hover effects consistent with achievement cards",
+        "Tests pass (npm run test:run)",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-004",
+      "title": "Add project portfolio section",
+      "description": "As a technical recruiter, I want to see concrete projects Greg has worked on so I can assess technical capabilities.",
+      "acceptanceCriteria": [
+        "New section after skills section titled 'Projects' or 'Portfolio'",
+        "Include 3-4 project cards with: title, description, tech stack, links (GitHub/demo)",
+        "Use placeholder projects (can include: this portfolio site, Second Brain, Situation Dashboard, Dexter, etc.)",
+        "Each card shows tech tags similar to skills section",
+        "Optional: screenshots or project thumbnails",
+        "Responsive grid layout",
+        "Tests pass (npm run test:run)",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 4,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-005",
+      "title": "Improve accessibility with ARIA labels",
+      "description": "As a screen reader user, I want proper ARIA labels on interactive elements so I can navigate the site effectively.",
+      "acceptanceCriteria": [
+        "Add aria-label to all navigation links",
+        "Add aria-label to download CV button",
+        "Add aria-label to contact button",
+        "Ensure all interactive elements have focus states",
+        "Add skip-to-content link for keyboard navigation",
+        "Verify heading hierarchy is logical (h1 → h2 → h3)",
+        "Run accessibility audit (Lighthouse or axe-core)",
+        "Tests pass (npm run test:run)"
+      ],
+      "priority": 5,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-006",
+      "title": "Add Formspree contact form",
+      "description": "As a potential employer, I want to contact Greg directly through the website so I don't have to use LinkedIn.",
+      "acceptanceCriteria": [
+        "Replace 'Other contact details available upon request' with contact form",
+        "Form fields: Name (required), Email (required), Message (required)",
+        "Use Formspree free tier (https://formspree.io/)",
+        "Form styled to match existing design (bg-tertiary, border, rounded)",
+        "Submit button with loading state and success/error feedback",
+        "Form validation (email format, required fields)",
+        "Success message: 'Thanks! I'll get back to you soon.'",
+        "Error handling with user-friendly messages",
+        "Tests pass (npm run test:run)",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 6,
+      "passes": false,
+      "notes": "NOTE: Formspree requires email verification. Use placeholder endpoint initially, add note for Greg to configure real endpoint."
+    },
+    {
+      "id": "US-007",
+      "title": "Add blog/articles section",
+      "description": "As a hiring manager, I want to see Greg's thought leadership so I can assess his expertise and communication skills.",
+      "acceptanceCriteria": [
+        "New section after interests section titled 'Articles' or 'Insights'",
+        "Include 2-3 article cards with: title, excerpt, publish date, read time",
+        "Use placeholder articles on agile topics (e.g., 'Scaling Scrum Beyond 10 Teams', 'Breaking Down UX Silos')",
+        "Each card links to # (Greg can add real articles later)",
+        "Responsive grid layout",
+        "Visual consistency with existing sections",
+        "Tests pass (npm run test:run)",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 7,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-008",
+      "title": "Performance optimization",
+      "description": "As a mobile user, I want the site to load quickly so I don't waste data or time.",
+      "acceptanceCriteria": [
+        "Implement lazy loading for intersection observer animations",
+        "Defer non-critical JavaScript",
+        "Add loading='lazy' to any images (if added in other stories)",
+        "Minify inline SVGs",
+        "Run Lighthouse performance audit",
+        "Achieve Lighthouse performance score > 90",
+        "No console errors or warnings",
+        "Tests pass (npm run test:run)"
+      ],
+      "priority": 8,
+      "passes": false,
+      "notes": ""
+    }
+  ]
+}
